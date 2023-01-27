@@ -1,0 +1,20 @@
+employee(worker1).
+employee(worker2). 
+employee(worker3). 
+employee(manager_it). 
+employee(manger_hr). 
+employee(ceo). 
+employee(directors). 
+employee (owners).
+
+boss(manager_it,worker1). 
+boss(manager_it,worker2). 
+boss(manger_hr,worker3). 
+boss(ceo,manager_it). 
+boss(ceo,manager_hr). 
+boss(directors,ceo). 
+boss(owners,directors). 
+ 
+superior(X,Y):-boss(X,Y),employee(X). 
+higher_superior(GM,X):-superior(GM,Y),boss(Y,X). 
+sibling(X,Y):-superior(M,X),superior(M,Y),X\=Y,higher_superior(F,X),higher_superior(F,Y).
